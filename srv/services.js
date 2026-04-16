@@ -17,7 +17,7 @@ class ProcessorService extends cds.ApplicationService {
   /** Custom Validation */
   async onUpdate (req) {
     let closed = await SELECT.one(1) .from (req.subject) .where `status.code = 'C'`
-    if (closed) req.reject `Can't modify a closed incident!!`
+    if (closed) req.reject `Can't modify a closed incident! Stop it right now!`
   }
 }
 module.exports = { ProcessorService }
